@@ -1,17 +1,78 @@
 <!DOCTYPE html>
-
-<html>
-
-<script>
-
-window.location.href="https://www.xiaohongshu.com/user/profile/651f8e9a000000002402e9ec";
-
-</script>
-
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复制按钮示例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: green;
+        }
+    </style>
+</head>
 <body>
 
+    <div class="container">
+        <h2>复制文本示例</h2>
+        <input type="text" id="textToCopy" value="这是你可以复制的文本">
+        <button onclick="copyText()">复制文本</button>
+        <p id="successMessage" class="message" style="display:none;">文本已复制！</p>
+    </div>
+
+    <script>
+        function copyText() {
+            var copyText = document.getElementById("textToCopy");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // 执行复制命令
+            document.execCommand("copy");
+
+            // 显示复制成功的消息
+            var message = document.getElementById("successMessage");
+            message.style.display = "block";
+
+            // 设置3秒后隐藏消息
+            setTimeout(function() {
+                message.style.display = "none";
+            }, 3000);
+        }
+    </script>
+
 </body>
-
 </html>
-
-
